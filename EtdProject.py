@@ -6,9 +6,12 @@
 #
 # WARNING! All changes made in this file will be lost!
 import ue9
+import LabJackPython
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
+    ip = "10.32.89.108"
+    
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(464, 447)
@@ -281,7 +284,7 @@ class Ui_MainWindow(object):
         
         #import ue9
         #import LabJackPython
-        myUE9 = ue9.UE9(ethernet=True,ipAddress = "10.32.89.108")    
+        myUE9 = ue9.UE9(ethernet=True,ipAddress = self.ip)    
         print("Motor Starting")
         fio_mask = 0b11111111
         fio_dir = 0b11111111
@@ -294,7 +297,7 @@ class Ui_MainWindow(object):
     def Reset_btn(self):
         #import ue9
         #import LabJackPython
-        myUE9 = ue9.UE9(ethernet=True,ipAddress = "10.32.89.108")    
+        myUE9 = ue9.UE9(ethernet=True,ipAddress = self.ip)    
         password = input("Reset Button Pressed Please Re-Enter Password: ")
         if(password == 'pass'):
             print("password accepted restarting motor")
@@ -304,7 +307,7 @@ class Ui_MainWindow(object):
     def PWM(self):
         #import ue9
         #import LabJackPython
-        myUE9 = ue9.UE9(ethernet=True,ipAddress = "10.32.89.108")    
+        myUE9 = ue9.UE9(ethernet=True,ipAddress = self.ip)    
         print("test")
         #DC = str(int((self.PWM_Slider.value()/65535)*100))
         
@@ -320,7 +323,7 @@ class Ui_MainWindow(object):
     def Forward_btn(self):
         #import ue9
         #import LabJackPython    
-        myUE9 = ue9.UE9(ethernet=True, ipAddress="10.32.89.108")
+        myUE9 = ue9.UE9(ethernet=True, ipAddress=self.ip)
         fio_mask = 0b11111111
         fio_dir = 0b11111111
         fio_state = 0b11111010 #Pins 0,1,2 (010)
@@ -332,7 +335,7 @@ class Ui_MainWindow(object):
     def Reverse_btn(self):
         #import ue9
         #import LabJackPython    
-        myUE9 = ue9.UE9(ethernet=True,ipAddress = "10.32.89.108")    
+        myUE9 = ue9.UE9(ethernet=True,ipAddress = self.ip)    
         fio_mask = 0b11111111
         fio_dir = 0b11111111
         fio_state = 0b11111100 #Pins 0,1,2 (001)
@@ -343,7 +346,7 @@ class Ui_MainWindow(object):
     def EmergencyStop(self):
         #import ue9
         #import LabJackPython    
-        myUE9 = ue9.UE9(ethernet=True,ipAddress = "10.32.89.108")    
+        myUE9 = ue9.UE9(ethernet=True,ipAddress = self.ip)    
         fio_mask = 0b11111111
         fio_dir = 0b11111111
         fio_state = 0b11111001 #Pins 0 (1 to stop)
