@@ -5,6 +5,7 @@
 # Created by: PyQt5 UI code generator 5.11.3
 #
 # WARNING! All changes made in this file will be lost!
+import sys
 import ue9
 import LabJackPython
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -275,8 +276,8 @@ class Ui_MainWindow(object):
 
 
         
-    import ue9
-    import LabJackPython
+#    import ue9
+#    import LabJackPython
     #myUE9 = input("Enter ip address:",labjackip_text.gettext())
     #print(myUE9)
    
@@ -359,8 +360,9 @@ class Ui_MainWindow(object):
         print(self.labjackip.text())
 
 if __name__ == "__main__":
-    import sys
+#    import sys
     app = QtWidgets.QApplication(sys.argv)
+    app.aboutToQuit.connect(app.deleteLater)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
